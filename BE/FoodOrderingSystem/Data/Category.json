@@ -1,0 +1,164 @@
+[
+  {
+    "Name": "Special Combination  Plates",
+    "Foods": [
+      {
+        "Name": "Curry Chicken",
+        "Number": "C1",
+        "Price": 9.50,
+        "IsSpicy": true
+      },
+      {
+        "Name": "Curry Beef",
+        "Number": "C2",
+        "Price": 9.75,
+        "IsSpicy": true
+      },
+      {
+        "Name": "Pepper Steak w. Onion",
+        "Number": "C3",
+        "Price": 9.75,
+        "IsSpicy": false
+      },
+      {
+        "Name": "Beef w. Broccoli",
+        "Number": "C4",
+        "Price": 7.75,
+        "IsSpicy": false
+      }
+    ]
+  },
+  {
+    "Name": "Chef's Special",
+    "Foods": [
+      {
+        "Name": "Hunan Chicken",
+        "Number": "S1",
+        "Price": 11.50,
+        "IsSpicy": false
+      },
+      {
+        "Name": "Hunan Shrimp or Beef",
+        "Number": "S2",
+        "Price": 12.50,
+        "IsSpicy": false
+      },
+      {
+        "Name": "Kung Po Chicken",
+        "Number": "S3",
+        "Price": 11.50,
+        "IsSpicy": false
+      },
+      {
+        "Name": "Chicken w. Garlic Sauce",
+        "Number": "S4",
+        "Price": 11.50,
+        "IsSpicy": false
+      }
+    ]
+  },
+  {
+    "Name": "Diet Speical",
+    "Foods": [
+      {
+        "Name": "Steamed Chicken & Broccoli",
+        "Price": 11.50,
+        "IsSpicy": false
+      },
+      {
+        "Name": "Steamed Shrimp & Broccoli",
+        "Price": 12.50,
+        "IsSpicy": false
+      },
+      {
+        "Name": "Steamed Mixed Vegetables",
+        "Price": 9.50,
+        "IsSpicy": false
+      },
+      {
+        "Name": "Steamed Chicken & Mixed Vegs",
+        "Price": 11.50,
+        "IsSpicy": false
+      }
+    ]
+  },
+  {
+    "Name": "Luncheon Special",
+    "Foods": [
+      {
+        "Name": "Curry Chicken",
+        "Number": "L1",
+        "Price": 7.50,
+        "IsSpicy": true
+      },
+      {
+        "Name": "Curry Beef",
+        "Number": "L2",
+        "Price": 7.50,
+        "IsSpicy": true
+      },
+      {
+        "Name": "Pepper Steak w. Onion",
+        "Number": "L3",
+        "Price": 7.50,
+        "IsSpicy": false
+      },
+      {
+        "Name": "Beef w. Broccoli",
+        "Number": "L4",
+        "Price": 7.50,
+        "IsSpicy": false
+      }
+    ]
+  },
+  {
+    "Name": "Chop Suey",
+    "Foods": [
+      {
+        "Name": "Vegetable Chop Suey",
+        "Price": 9.50,
+        "IsSpicy": false
+      },
+      {
+        "Name": "Roast Pork Chop Suey",
+        "Price": 10.50,
+        "IsSpicy": false
+      },
+      {
+        "Name": "Beef Chop Suey",
+        "Price": 10.50,
+        "IsSpicy": false
+      },
+      {
+        "Name": "Shrimp Chop Suey",
+        "Price": 10.50,
+        "IsSpicy": false
+      }
+    ]
+  },
+  {
+    "Name": "Appetizers",
+    "Foods": [
+      {
+        "Name": "Steam or Fried Dumpling(8)",
+        "Price": 6.95,
+        "IsSpicy": false
+      },
+      {
+        "Name": "Veg. Egg Roll",
+        "Price": 1.50,
+        "IsSpicy": false
+      },
+      {
+        "Name": "Roast Pork Egg Roll",
+        "Price": 1.50,
+        "IsSpicy": false
+      },
+      {
+        "Name": "Shrimp Egg Roll",
+        "Price": 1.50,
+        "IsSpicy": false
+      }
+    ]
+  }
+]
