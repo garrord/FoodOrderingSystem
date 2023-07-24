@@ -15,9 +15,7 @@ namespace FoodOrderingSystem.Entities
         public decimal Total { get; set; }
         public DateTime DateOrdered { get; set; }
 
-        public List<FoodOrder> FoodOrder { get; set; }
-        [ForeignKey("FoodOrderId")]
-        public int FoodOrderId { get; set; }
+        public List<FoodItemOrderXOrder> FoodItemOrderXOrders { get; set; }
 
         public DeliveryMethod DeliveryMethod { get; set; }
         [ForeignKey("DeliveryId")]
@@ -28,9 +26,5 @@ namespace FoodOrderingSystem.Entities
         public Address Address { get; set; }
         [ForeignKey("AddressId")]
         public int AddressId { get; set; }
-
     }
 }
-
-
-//Server=localhost\MSSQLSERVER05;Database=master;Trusted_Connection=True;

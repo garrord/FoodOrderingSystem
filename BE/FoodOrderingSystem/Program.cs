@@ -10,7 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<FoodOrderingContext>(dbContextOptions => dbContextOptions
-    .UseSqlServer("Server=localhost\\MSSQLSERVER05;Database=master;Trusted_Connection=True"));
+    .UseSqlServer("Server=localhost\\MSSQLSERVER05;Database=master;Trusted_Connection=True;TrustServerCertificate=True"));
 
 var app = builder.Build();
 
