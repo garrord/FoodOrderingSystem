@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FoodOrderingSystem.Entities
 {
-    public class PaymentType
+    public class PaymentMethod
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }

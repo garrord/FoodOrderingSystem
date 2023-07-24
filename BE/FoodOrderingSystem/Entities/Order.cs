@@ -20,7 +20,7 @@ namespace FoodOrderingSystem.Entities
         public DeliveryMethod DeliveryMethod { get; set; }
         [ForeignKey("DeliveryId")]
         public int DeliveryId { get; set; }
-        public PaymentType PaymentType { get; set; }
+        public PaymentMethod PaymentType { get; set; }
         [ForeignKey("PaymentId")]
         public int PaymentId { get; set; }
         public Address Address { get; set; }
