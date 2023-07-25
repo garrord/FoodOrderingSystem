@@ -30,7 +30,7 @@ if (app.Environment.IsDevelopment())
 //DbSeeder.SeedDeliveryMethodData();
 //DbSeeder.SeedPaymentMethodData();
 //DbSeeder.SeedCategoryData();
-DbSeeder.SeedLocationDetails();
+//DbSeeder.SeedLocationDetails();
 //DbSeeder.SeedHoursOfOperation();
 
 app.UseHttpsRedirection();
