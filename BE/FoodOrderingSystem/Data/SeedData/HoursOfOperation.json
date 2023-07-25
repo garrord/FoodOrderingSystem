@@ -1,0 +1,30 @@
+[
+  {
+    "DayOfWeek": "Sunday",
+    "Hours": "11:30 AM ~ 09:45PM"
+  },
+  {
+    "DayOfWeek": "Monday",
+    "Hours": "10:30 AM ~ 09:45PM"
+  },
+  {
+    "DayOfWeek": "Tuesday",
+    "Hours": "Closed ~ Closed"
+  },
+  {
+    "DayOfWeek": "Wednesday",
+    "Hours": "10:30 AM ~ 09:45PM"
+  },
+  {
+    "DayOfWeek": "Thursday",
+    "Hours": "10:30 AM ~ 09:45PM"
+  },
+  {
+    "DayOfWeek": "Friday",
+    "Hours": "10:30 AM ~ 09:45PM"
+  },
+  {
+    "DayOfWeek": "Saturday",
+    "Hours": "11:30 AM ~ 19:45PM"
+  }
+]

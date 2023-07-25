@@ -7,6 +7,32 @@ namespace FoodOrderingSystem.Data
 {
     public static class DbSeeder
     {
+        public static void SeedHoursOfOperation()
+        {
+            using (FoodOrderingContext context = new FoodOrderingContext(new DbContextOptionsBuilder<FoodOrderingContext>().
+                 UseSqlServer("Server=localhost\\MSSQLSERVER05;Database=master;Trusted_Connection=True;TrustServerCertificate=True").Options))
+            {
+                string dataFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Data\\SeedData", "HoursOfOperation.json");
+                string json = File.ReadAllText(dataFilePath);
+                List<HoursOfOperation> hours = JsonConvert.DeserializeObject<List<HoursOfOperation>>(json);
+                context.HoursOfOperation.AddRange(hours);
+                context.SaveChanges();
+            }
+        }
+
+        public static void SeedLocationDetails()
+        {
+            using (FoodOrderingContext context = new FoodOrderingContext(new DbContextOptionsBuilder<FoodOrderingContext>().
+                 UseSqlServer("Server=localhost\\MSSQLSERVER05;Database=master;Trusted_Connection=True;TrustServerCertificate=True").Options))
+            {
+                string dataFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Data\\SeedData", "LocationDetails.json");
+                string json = File.ReadAllText(dataFilePath);
+                LocationDetails details = JsonConvert.DeserializeObject<LocationDetails>(json);
+                context.LocationDetails.AddRange(details);
+                context.SaveChanges();
+            }
+        }
+
         public static void SeedDeliveryMethodData()
         {
             using (FoodOrderingContext context = new FoodOrderingContext(new DbContextOptionsBuilder<FoodOrderingContext>().

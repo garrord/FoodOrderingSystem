@@ -13,7 +13,8 @@ namespace FoodOrderingSystem.DbContexts
         public DbSet<PaymentMethod> PaymentTypes { get; set; }
         public DbSet<DeliveryMethod> DeliveryMethods { get; set; }
         public DbSet<Address> Addresses { get; set; }
-
+        public DbSet<HoursOfOperation> HoursOfOperation { get; set; }
+        public DbSet<LocationDetails> LocationDetails { get; set; }
         public FoodOrderingContext(DbContextOptions options) :base(options)
         {
 
