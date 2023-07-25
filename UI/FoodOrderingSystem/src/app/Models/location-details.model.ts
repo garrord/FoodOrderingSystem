@@ -1,4 +1,4 @@
-export class LocationDetails{
+export class LocationDetailsModel{
     addressLine1!:string;
     addressLine2!:string;
     city!:string;

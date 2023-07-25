@@ -6,20 +6,22 @@ import { AppComponent } from './app.component';
 import { OpeningHoursComponent } from './Components/opening-hours.component';
 import { HomePageContainer } from './Containers/home-page.container';
 import { HttpClientModule } from '@angular/common/http';
+import { LocationDetailService } from './Services/location-details.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     OpeningHoursComponent,
     HomePageContainer
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    LocationDetailService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
