@@ -1,3 +1,4 @@
+using FoodOrderingSystem.Data;
 using FoodOrderingSystem.DbContexts;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,6 +21,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+//DbSeeder.SeedDeliveryMethodData();
+//DbSeeder.SeedPaymentMethodData();
+DbSeeder.SeedCategoryData();
 
 app.UseHttpsRedirection();
 

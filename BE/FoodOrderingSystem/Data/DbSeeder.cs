@@ -12,7 +12,7 @@ namespace FoodOrderingSystem.Data
             using (FoodOrderingContext context = new FoodOrderingContext(new DbContextOptionsBuilder<FoodOrderingContext>().
                 UseSqlServer("Server=localhost\\MSSQLSERVER05;Database=master;Trusted_Connection=True;TrustServerCertificate=True").Options))
             {
-                string dataFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Data/SeedData", "DeliveryMethods.json");
+                string dataFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Data\\SeedData", "DeliveryMethods.json");
                 string json = File.ReadAllText(dataFilePath);
                 List<DeliveryMethod> deliveryMethods = JsonConvert.DeserializeObject<List<DeliveryMethod>>(json);
                 context.DeliveryMethods.AddRange(deliveryMethods);
@@ -38,7 +38,7 @@ namespace FoodOrderingSystem.Data
             using (FoodOrderingContext context = new FoodOrderingContext(new DbContextOptionsBuilder<FoodOrderingContext>()
                 .UseSqlServer("Server=localhost\\MSSQLSERVER05;Database=master;Trusted_Connection=True;TrustServerCertificate=True").Options))
             {
-                string dataFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Data/SeedData", "Categories");
+                string dataFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Data/SeedData", "Categories.json");
                 string json = File.ReadAllText(dataFilePath);
                 List<Category> categories = JsonConvert.DeserializeObject<List<Category>>(json);
                 context.Categories.AddRange(categories);
