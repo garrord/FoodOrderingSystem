@@ -21,9 +21,18 @@ builder.Services.AddTransient<IMenuManager, MenuManager>();
 builder.Services.AddTransient<ILocationDetailsQueryRepository, LocationDetailsQueryRepository>();
 builder.Services.AddTransient<ILocationDetailsManager, LocationDetailsManager>();
 
+builder.Services.AddCors(options => options.AddPolicy("AllowSpecificOrigin",
+    builder => builder.WithOrigins("*")
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+
+app.UseCors("AllowSpecificOrigin");
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
