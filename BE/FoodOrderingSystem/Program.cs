@@ -2,6 +2,7 @@ using FoodOrderingSystem.Contracts;
 using FoodOrderingSystem.Data;
 using FoodOrderingSystem.DbContexts;
 using FoodOrderingSystem.Managers;
+using FoodOrderingSystem.QueryRepositories;
 using FoodOrderingSystem.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,6 +18,8 @@ builder.Services.AddDbContext<FoodOrderingContext>(dbContextOptions => dbContext
     .UseSqlServer("Server=localhost\\MSSQLSERVER05;Database=master;Trusted_Connection=True;TrustServerCertificate=True"));
 builder.Services.AddTransient<IMenuQueryRepository, MenuQueryRepository>();
 builder.Services.AddTransient<IMenuManager, MenuManager>();
+builder.Services.AddTransient<ILocationDetailsQueryRepository, LocationDetailsQueryRepository>();
+builder.Services.AddTransient<ILocationDetailsManager, LocationDetailsManager>();
 
 var app = builder.Build();
 
