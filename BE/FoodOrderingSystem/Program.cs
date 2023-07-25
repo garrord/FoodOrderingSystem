@@ -1,5 +1,8 @@
+using FoodOrderingSystem.Contracts;
 using FoodOrderingSystem.Data;
 using FoodOrderingSystem.DbContexts;
+using FoodOrderingSystem.Managers;
+using FoodOrderingSystem.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +15,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<FoodOrderingContext>(dbContextOptions => dbContextOptions
     .UseSqlServer("Server=localhost\\MSSQLSERVER05;Database=master;Trusted_Connection=True;TrustServerCertificate=True"));
+builder.Services.AddTransient<IMenuQueryRepository, MenuQueryRepository>();
+builder.Services.AddTransient<IMenuManager, MenuManager>();
 
 var app = builder.Build();
 
@@ -24,7 +29,7 @@ if (app.Environment.IsDevelopment())
 
 //DbSeeder.SeedDeliveryMethodData();
 //DbSeeder.SeedPaymentMethodData();
-DbSeeder.SeedCategoryData();
+//DbSeeder.SeedCategoryData();
 
 app.UseHttpsRedirection();
 
