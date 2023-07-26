@@ -1,4 +1,9 @@
 <div>
     {{ locationDetails.addressLine1 }}, {{ locationDetails.city }}, {{ locationDetails.state }} {{ locationDetails.zipCode }}
-    <mat-icon>call</mat-icon>{{ locationDetails.phoneNumber }}
+    {{ locationDetails.phoneNumber }}
 </div>
+
+<div>
+    <button [routerLink]="['/menu']">Take a look at our menu!</button>
+</div>
+<router-outlet></router-outlet>
