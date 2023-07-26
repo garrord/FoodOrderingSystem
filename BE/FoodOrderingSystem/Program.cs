@@ -41,7 +41,7 @@ if (app.Environment.IsDevelopment())
 
 //DbSeeder.SeedDeliveryMethodData();
 //DbSeeder.SeedPaymentMethodData();
-DbSeeder.SeedCategoryData();
+//DbSeeder.SeedCategoryData();
 //DbSeeder.SeedLocationDetails();
 //DbSeeder.SeedHoursOfOperation();
 

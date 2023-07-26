@@ -67,7 +67,6 @@ namespace FoodOrderingSystem.Data
                 string dataFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Data/SeedData", "Categories.json");
                 string json = File.ReadAllText(dataFilePath);
                 List<Category> categories = JsonConvert.DeserializeObject<List<Category>>(json);
-                context.Categories.RemoveRange();
                 context.Categories.AddRange(categories);
                 context.SaveChanges();
             }

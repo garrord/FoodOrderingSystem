@@ -1,4 +1,5 @@
 ﻿using FoodOrderingSystem.Contracts;
+using FoodOrderingSystem.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FoodOrderingSystem.Controllers
@@ -24,7 +25,8 @@ namespace FoodOrderingSystem.Controllers
         [HttpGet("{category}")]
         public async Task<ActionResult> GetFoodPerCategory(string category)
         {
-            throw new NotImplementedException();
+            List<MenuItemModel> menuItems = await _menuManager.GetFoodPerCategory(category);
+            return new JsonResult(menuItems);
         }
     }
 }

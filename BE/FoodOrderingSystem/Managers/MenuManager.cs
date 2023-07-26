@@ -1,4 +1,6 @@
 ﻿using FoodOrderingSystem.Contracts;
+using FoodOrderingSystem.Entities;
+using FoodOrderingSystem.Models;
 
 namespace FoodOrderingSystem.Managers
 {
@@ -15,6 +17,12 @@ namespace FoodOrderingSystem.Managers
         {
             List<string> categories = await _menuQueryRepo.GetAllCategories();
             return categories;
+        }
+
+        public async Task<List<MenuItemModel>> GetFoodPerCategory(string category)
+        {
+            List<MenuItemModel> menuItems = await _menuQueryRepo.GetFoodPerCategory(category);
+            return menuItems;
         }
     }
 }
