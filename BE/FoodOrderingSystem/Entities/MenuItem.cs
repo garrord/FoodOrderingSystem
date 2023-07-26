@@ -7,7 +7,7 @@ namespace FoodOrderingSystem.Entities
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public int? Number { get; set; }
+        public string? Number { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
         public bool IsSpicy { get; set; }

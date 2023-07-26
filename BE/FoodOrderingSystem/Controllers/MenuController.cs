@@ -14,11 +14,17 @@ namespace FoodOrderingSystem.Controllers
             _menuManager = menuManager;
         }
 
-        [HttpGet("all")]
+        [HttpGet("categories")]
         public async Task<ActionResult> GetAllCategories()
         {
             List<string> categories = await _menuManager.GetAllCategories();
             return new JsonResult(categories);
+        }
+
+        [HttpGet("{category}")]
+        public async Task<ActionResult> GetFoodPerCategory(string category)
+        {
+            throw new NotImplementedException();
         }
     }
 }

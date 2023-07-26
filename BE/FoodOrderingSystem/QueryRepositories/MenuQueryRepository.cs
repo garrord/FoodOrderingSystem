@@ -1,5 +1,6 @@
 ﻿using FoodOrderingSystem.Contracts;
 using FoodOrderingSystem.DbContexts;
+using FoodOrderingSystem.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace FoodOrderingSystem.Repositories
@@ -20,5 +21,10 @@ namespace FoodOrderingSystem.Repositories
 
             return categories;
         }
+
+        //public async Task<List<MenuItemModel>> GetFoodPerCategory(string category)
+        //{
+        //    List<MenuItemModel> menuItems = await (from )
+        //}
     }
 }

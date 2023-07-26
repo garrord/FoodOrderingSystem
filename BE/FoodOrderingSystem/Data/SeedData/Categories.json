@@ -1,7 +1,7 @@
 [
   {
     "Name": "Special Combination  Plates",
-    "Foods": [
+    "MenuItems": [
       {
         "Name": "Curry Chicken",
         "Number": "C1",
@@ -30,7 +30,7 @@
   },
   {
     "Name": "Chef's Special",
-    "Foods": [
+    "MenuItems": [
       {
         "Name": "Hunan Chicken",
         "Number": "S1",
@@ -59,7 +59,7 @@
   },
   {
     "Name": "Diet Speical",
-    "Foods": [
+    "MenuItems": [
       {
         "Name": "Steamed Chicken & Broccoli",
         "Price": 11.50,
@@ -84,7 +84,7 @@
   },
   {
     "Name": "Luncheon Special",
-    "Foods": [
+    "MenuItems": [
       {
         "Name": "Curry Chicken",
         "Number": "L1",
@@ -113,7 +113,7 @@
   },
   {
     "Name": "Chop Suey",
-    "Foods": [
+    "MenuItems": [
       {
         "Name": "Vegetable Chop Suey",
         "Price": 9.50,
@@ -138,7 +138,7 @@
   },
   {
     "Name": "Appetizers",
-    "Foods": [
+    "MenuItems": [
       {
         "Name": "Steam or Fried Dumpling(8)",
         "Price": 6.95,
