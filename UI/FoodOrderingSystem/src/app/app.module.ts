@@ -15,6 +15,8 @@ import { MenuContainer } from './Containers/MenuContainer/menu.container';
 import { MenuItemsService } from './Services/menu-items.service';
 import { CategoriesComponent } from './Components/CategoriesComponent/categories.component';
 import { MenuItemsComponent } from './Components/MenuItemsComponent/menu-items.component';
+import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/dialog';
+import { MenuItemDialogContainer } from './Containers/MenutItemDialog/menu-item-dialog.container';
 
 @NgModule({
   declarations: [
@@ -25,13 +27,15 @@ import { MenuItemsComponent } from './Components/MenuItemsComponent/menu-items.c
     PictureComponent,
     MenuContainer,
     CategoriesComponent,
-    MenuItemsComponent
+    MenuItemsComponent,
+    MenuItemDialogContainer
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     MatIconModule,
+    MatDialogModule,
     RouterModule.forRoot([
       {
         path: 'home', component:HomePageContainer
@@ -46,7 +50,8 @@ import { MenuItemsComponent } from './Components/MenuItemsComponent/menu-items.c
    ],
   providers: [
     LocationDetailService,
-    MenuItemsService
+    MenuItemsService,
+    //{ provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true} }
   ],
   bootstrap: [AppComponent]
 })
