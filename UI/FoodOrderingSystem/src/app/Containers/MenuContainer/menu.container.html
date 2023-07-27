@@ -1,0 +1,10 @@
+<div>
+    <categories-component
+        [categories]="categories"
+        (selectedCategory)="selectCategory($event)"
+    ></categories-component>
+
+    <menu-items-component
+        [menuItemsPerCategory]="menuItemsPerCategory"
+    ></menu-items-component>    
+</div>

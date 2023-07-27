@@ -12,6 +12,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { PictureComponent } from './Components/PictureComponent/picture.component';
 import { RouterModule } from '@angular/router';
 import { MenuContainer } from './Containers/MenuContainer/menu.container';
+import { MenuItemsService } from './Services/menu-items.service';
+import { CategoriesComponent } from './Components/CategoriesComponent/categories.component';
+import { MenuItemsComponent } from './Components/MenuItemsComponent/menu-items.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,9 @@ import { MenuContainer } from './Containers/MenuContainer/menu.container';
     LocationDetailsComponent,
     HomePageContainer,
     PictureComponent,
-    MenuContainer
+    MenuContainer,
+    CategoriesComponent,
+    MenuItemsComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +45,8 @@ import { MenuContainer } from './Containers/MenuContainer/menu.container';
     ])
    ],
   providers: [
-    LocationDetailService
+    LocationDetailService,
+    MenuItemsService
   ],
   bootstrap: [AppComponent]
 })
