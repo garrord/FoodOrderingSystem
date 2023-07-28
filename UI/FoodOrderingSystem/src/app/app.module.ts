@@ -17,6 +17,7 @@ import { CategoriesComponent } from './Components/CategoriesComponent/categories
 import { MenuItemsComponent } from './Components/MenuItemsComponent/menu-items.component';
 import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/dialog';
 import { MenuItemDialogContainer } from './Containers/MenutItemDialog/menu-item-dialog.container';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -46,12 +47,13 @@ import { MenuItemDialogContainer } from './Containers/MenutItemDialog/menu-item-
       {
         path:'', redirectTo: 'home', pathMatch: 'full'
       }
-    ])
+    ]),
+    BrowserAnimationsModule
    ],
   providers: [
     LocationDetailService,
     MenuItemsService,
-    //{ provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true} }
+    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false} }
   ],
   bootstrap: [AppComponent]
 })

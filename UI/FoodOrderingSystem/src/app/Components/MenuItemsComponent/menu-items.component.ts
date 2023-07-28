@@ -13,16 +13,12 @@ export class MenuItemsComponent{
     constructor(private dialog: MatDialog){}
 
     @Input() menuItemsPerCategory: MenuItemModel[] = [];
-    menuItems: MenuItemModel[] = [];
-    isDialogOpen: boolean = false;
 
     openDialog():void{
         const dialogConfig = new MatDialogConfig();
-        dialogConfig.hasBackdrop = false;
+        dialogConfig.hasBackdrop = true;
+        dialogConfig.disableClose = true;
         
         const dialogRef = this.dialog.open(MenuItemDialogContainer, dialogConfig);
-        dialogRef.afterClosed().subscribe(() => {
-            this.isDialogOpen = false;
-        });
     }
 }
