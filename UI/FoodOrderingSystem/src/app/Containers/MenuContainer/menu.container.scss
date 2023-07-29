@@ -1,0 +1,43 @@
+
+
+//.center{
+    //position: fixed;
+    //top: 50%;
+    //left: 50%;
+    //transform: translate(-50%, -50%);
+    //-ms-transform: translate(-50%, -50%); /* IE 9 */
+    //-webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */	
+    // border: green 5px solid;
+//}
+
+// .left{
+//     position: fixed;
+//     top: 50%;
+//     left: 40%;
+// }
+
+// .right{
+//     position: fixed;
+//     top: 50%;
+//     left: 60%;
+// }
+
+.tt{
+    font-size: 25px;
+    border: green 5px solid;
+    display:grid;
+    grid-template-areas: ' categories food';
+    grid-template-columns: 1fr 1fr;
+    gap:20px;
+}
+
+.categories{
+    grid-area: categories;
+    border: black 4px solid;
+}
+
+.food{
+    grid-area: food;
+    border: black 4px solid;
+    
+}

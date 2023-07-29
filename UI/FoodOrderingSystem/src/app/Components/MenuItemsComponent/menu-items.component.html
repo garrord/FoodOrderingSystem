@@ -1,3 +1,5 @@
-<div *ngFor="let menuItem of menuItemsPerCategory" (click)="openDialog(menuItem)">
+<div 
+    style="margin:10px;"
+    *ngFor="let menuItem of menuItemsPerCategory" (click)="openDialog(menuItem)">
     {{ menuItem.name }}
 </div>

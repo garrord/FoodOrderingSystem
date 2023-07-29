@@ -23,6 +23,8 @@ export class MenuItemsComponent{
 
     openDialog(selectedItem: MenuItemModel):void{
         const dialogRef: MatDialogRef<MenuItemDialogContainer> = this.dialog.open(MenuItemDialogContainer, {
+            height: '300px',
+            width: '300px',
             hasBackdrop: true,
             disableClose: true,
             data:{

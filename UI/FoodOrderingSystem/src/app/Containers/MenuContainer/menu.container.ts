@@ -4,7 +4,8 @@ import { MenuItemsService } from "src/app/Services/menu-items.service";
 
 @Component({
     selector:'menu-container',
-    templateUrl: 'menu.container.html'
+    templateUrl: 'menu.container.html',
+    styleUrls:['menu.container.scss']
 })
 
 export class MenuContainer implements OnInit{

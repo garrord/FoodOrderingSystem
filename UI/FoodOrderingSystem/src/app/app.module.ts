@@ -27,6 +27,7 @@ import { menuCheckoutReducer } from './state/menu-checkout.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { CheckoutContainer } from './Containers/CheckoutContainer/checkout.container';
 import { CheckoutComponent } from './Components/CheckoutComponent/checkout.component';
+import { NavBarComponent } from './Components/NavBar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { CheckoutComponent } from './Components/CheckoutComponent/checkout.compo
     MenuItemsComponent,
     MenuItemDialogContainer,
     CheckoutContainer,
-    CheckoutComponent
+    CheckoutComponent,
+    NavBarComponent
   ],
   imports: [
     MatSelectModule,
@@ -61,7 +63,10 @@ import { CheckoutComponent } from './Components/CheckoutComponent/checkout.compo
       },
       {
         path:'', redirectTo: 'home', pathMatch: 'full'
-      }
+      },
+      // {
+      //   path:'cart', component:
+      // }
     ]),
     BrowserAnimationsModule,
     StoreModule.forRoot({ feature: menuCheckoutReducer }, {}),

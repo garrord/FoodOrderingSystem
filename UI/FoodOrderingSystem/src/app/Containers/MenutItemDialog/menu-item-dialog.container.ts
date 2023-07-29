@@ -5,7 +5,8 @@ import { CheckoutCartModel } from "src/app/Models/checkout-cart.model";
 
 @Component({
     selector: 'menu-item-dialog-container',
-    templateUrl: 'menu-item-dialog.container.html'
+    templateUrl: 'menu-item-dialog.container.html',
+    styleUrls:['menu-item-dialog.container.scss']
 })
 
 export class MenuItemDialogContainer implements OnInit{
@@ -21,7 +22,7 @@ export class MenuItemDialogContainer implements OnInit{
     ngOnInit():void{
         this.foodForm = this.fb.group({
             price: { value: this.data.selectedItem.price, disabled: true },
-            quantity: 1,
+            quantity: "1",
             message: ''
         })
     }
@@ -38,7 +39,7 @@ export class MenuItemDialogContainer implements OnInit{
     createItem():CheckoutCartModel{
         let item: CheckoutCartModel = new CheckoutCartModel();
         item.name = this.data.selectedItem.name;
-        item.price = this.foodForm.get('price')?.value;
+        item.price = this.data.selectedItem.price;
         item.quantity = this.foodForm.get('quantity')?.value;
         item.message = this.foodForm.get('message')?.value;
 

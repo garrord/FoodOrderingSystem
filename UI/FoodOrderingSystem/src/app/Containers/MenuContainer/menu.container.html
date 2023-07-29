@@ -1,13 +1,18 @@
-<div>
-    <categories-component
-        [categories]="categories"
-        (selectedCategory)="selectCategory($event)"
-    ></categories-component>
+<!-- <div class="center"> -->
+    <div class="tt">
+        <categories-component
+            class="categories left"
+            [categories]="categories"
+            (selectedCategory)="selectCategory($event)"
+        ></categories-component>
+    
+        <menu-items-component *ngIf="menuItemsPerCategory.length > 0"
+            class="food right"
+            [menuItemsPerCategory]="menuItemsPerCategory"
+        ></menu-items-component>
+    </div>
+<!-- </div> -->
 
-    <menu-items-component *ngIf="menuItemsPerCategory.length > 0"
-        [menuItemsPerCategory]="menuItemsPerCategory"
-    ></menu-items-component>
-</div>
 
 <div>
     <checkout-container></checkout-container>
