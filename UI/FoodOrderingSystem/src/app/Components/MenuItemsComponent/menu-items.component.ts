@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
+import { MatDialog, MatDialogConfig, MatDialogRef } from "@angular/material/dialog";
 import { MenuItemDialogContainer } from "src/app/Containers/MenutItemDialog/menu-item-dialog.container";
 import { MenuItemModel } from "src/app/Models/menu-item.model";
 
@@ -14,11 +14,19 @@ export class MenuItemsComponent{
 
     @Input() menuItemsPerCategory: MenuItemModel[] = [];
 
-    openDialog():void{
-        const dialogConfig = new MatDialogConfig();
-        dialogConfig.hasBackdrop = true;
-        dialogConfig.disableClose = true;
-        
-        const dialogRef = this.dialog.open(MenuItemDialogContainer, dialogConfig);
+    openDialog(selectedItem: MenuItemModel):void{
+        const dialogRef: MatDialogRef<MenuItemDialogContainer> = this.dialog.open(MenuItemDialogContainer, {
+            hasBackdrop: true,
+            disableClose: true,
+            data:{
+                selectedItem
+            }
+        });
+
+        dialogRef.afterClosed().subscribe(x => {
+            if(x){
+                console.log(x);
+            }
+        });
     }
 }

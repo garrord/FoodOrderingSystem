@@ -1,11 +1,37 @@
-<mat-dialog-content>
-    hi from the dialog!!
-</mat-dialog-content>
+<form (ngSubmit)="save()" [formGroup]="foodForm">
+    <mat-form-field>
+        <mat-label>Price</mat-label>
+        <input
+            matInput
+            type="text"
+            formControlName="price"
+        >
+    </mat-form-field>
 
-<mat-dialog-actions>
-    <button
-        (click)="onNoClick()"
-    >
-        close
-    </button>
-</mat-dialog-actions>
+    <mat-form-field>
+        <mat-label>Quantity</mat-label>
+        <mat-select formControlName="quantity">
+            <mat-option value="1">1</mat-option>
+            <mat-option value="2">2</mat-option>
+            <mat-option value="3">3</mat-option>
+            <mat-option value="4">4</mat-option>
+            <mat-option value="5">5</mat-option>
+            <mat-option value="6">6</mat-option>
+            <mat-option value="7">7</mat-option>
+            <mat-option value="8">8</mat-option>
+            <mat-option value="9">9</mat-option>
+            <mat-option value="10">10</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Message</mat-label>
+        <textarea
+            matInput
+            type="text"
+            formControlName="message"
+        ></textarea>
+    </mat-form-field>
+    <button mat-button type="submit">Save</button>
+    <button mat-button type="button" (click)="cancel()">Cancel</button>
+</form>

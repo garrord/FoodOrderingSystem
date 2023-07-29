@@ -18,6 +18,10 @@ import { MenuItemsComponent } from './Components/MenuItemsComponent/menu-items.c
 import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/dialog';
 import { MenuItemDialogContainer } from './Containers/MenutItemDialog/menu-item-dialog.container';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -32,11 +36,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MenuItemDialogContainer
   ],
   imports: [
+    MatSelectModule,
+    MatInputModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     MatIconModule,
     MatDialogModule,
+    MatButtonModule,
     RouterModule.forRoot([
       {
         path: 'home', component:HomePageContainer
