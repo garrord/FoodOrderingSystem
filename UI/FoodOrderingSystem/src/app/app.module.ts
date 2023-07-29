@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +22,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
+import { StoreModule } from '@ngrx/store';
+import { menuCheckoutReducer } from './state/menu-checkout.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { CheckoutContainer } from './Containers/CheckoutContainer/checkout.container';
+import { CheckoutComponent } from './Components/CheckoutComponent/checkout.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +38,9 @@ import { MatButtonModule } from '@angular/material/button';
     MenuContainer,
     CategoriesComponent,
     MenuItemsComponent,
-    MenuItemDialogContainer
+    MenuItemDialogContainer,
+    CheckoutContainer,
+    CheckoutComponent
   ],
   imports: [
     MatSelectModule,
@@ -56,12 +63,17 @@ import { MatButtonModule } from '@angular/material/button';
         path:'', redirectTo: 'home', pathMatch: 'full'
       }
     ]),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    StoreModule.forRoot({ feature: menuCheckoutReducer }, {}),
+    StoreDevtoolsModule.instrument({ 
+      name: "demo app dev tools",
+      maxAge: 25, 
+      logOnly: !isDevMode() 
+    })
    ],
   providers: [
     LocationDetailService,
-    MenuItemsService,
-    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false} }
+    MenuItemsService
   ],
   bootstrap: [AppComponent]
 })
