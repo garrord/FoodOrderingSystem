@@ -2,5 +2,10 @@
     Jade Dragon Chinese Restaurant
     <a [routerLink]="['/home']">Home</a>
     <a [routerLink]="['/menu']">Menu</a>
-    //<
+    <a 
+        [matBadge]="quantity"
+        matBadgePosition="after"
+        matBadgeColor="accent"
+        matBadgeSize="large"
+        [routerLink]="['/cart']">Cart</a>
 </div>

@@ -3,7 +3,10 @@
         {{ data.selectedItem.name }}
     </div>
     <div class="center-text">
-        Price: ${{ data.selectedItem.price }}
+        Individual Price: ${{ data.selectedItem.price.toFixed(2) }}
+    </div>
+    <div class="center-text">
+        Total Price: ${{ calculateTotalPrice() }}
     </div>
     <form (ngSubmit)="save()" [formGroup]="foodForm">
         <mat-form-field>

@@ -25,9 +25,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { StoreModule } from '@ngrx/store';
 import { menuCheckoutReducer } from './state/menu-checkout.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { CheckoutContainer } from './Containers/CheckoutContainer/checkout.container';
 import { CheckoutComponent } from './Components/CheckoutComponent/checkout.component';
 import { NavBarComponent } from './Components/NavBar/nav-bar.component';
+import { CheckoutContainer } from './Containers/CheckoutContainer/checkout.container';
+import { MatBadgeModule } from '@angular/material/badge';
+import { AddItemContainer } from './Containers/AddItemContainer/add-item.container';
 
 @NgModule({
   declarations: [
@@ -40,11 +42,13 @@ import { NavBarComponent } from './Components/NavBar/nav-bar.component';
     CategoriesComponent,
     MenuItemsComponent,
     MenuItemDialogContainer,
-    CheckoutContainer,
+    AddItemContainer,
     CheckoutComponent,
-    NavBarComponent
+    NavBarComponent,
+    CheckoutContainer
   ],
   imports: [
+    MatBadgeModule,
     MatSelectModule,
     MatInputModule,
     ReactiveFormsModule,
@@ -64,9 +68,9 @@ import { NavBarComponent } from './Components/NavBar/nav-bar.component';
       {
         path:'', redirectTo: 'home', pathMatch: 'full'
       },
-      // {
-      //   path:'cart', component:
-      // }
+      {
+        path:'cart', component: CheckoutContainer
+      }
     ]),
     BrowserAnimationsModule,
     StoreModule.forRoot({ feature: menuCheckoutReducer }, {}),

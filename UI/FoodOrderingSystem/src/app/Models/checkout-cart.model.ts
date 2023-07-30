@@ -1,6 +1,6 @@
+import { CheckoutItemModel } from "./checkout-item.model";
+
 export class CheckoutCartModel{
-    name!:string;
-    price!:number;
-    quantity!:number;
-    message?:string;
+    items!:CheckoutItemModel[];
+    totalPrice!:number;
 }

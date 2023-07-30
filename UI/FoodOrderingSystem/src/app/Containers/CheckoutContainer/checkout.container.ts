@@ -1,30 +1,66 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core"
 import { Store } from "@ngrx/store";
+import { Subscription } from "rxjs";
 import { CheckoutCartModel } from "src/app/Models/checkout-cart.model";
-import { CheckoutMenuState, getMenuItemsState } from "src/app/state/menu-checkout.reducer";
+import { CheckoutItemModel } from "src/app/Models/checkout-item.model";
+import { AppState, getMenuItemsState } from "src/app/state/menu-checkout.reducer";
 
 @Component({
     selector: 'checkout-container',
     templateUrl: 'checkout.container.html'
 })
 
-export class CheckoutContainer implements OnInit{
-    
-    constructor(private store: Store<any>){}
+export class CheckoutContainer implements OnInit, OnDestroy{
 
-    checkoutItems: CheckoutCartModel[] = [];
+    constructor(private store: Store<AppState>){}
 
-    ngOnInit(): void {
-        console.log("hi from checkout container");
-        console.log(this.checkoutItems);
-        console.log(this.checkoutItems.length);
-        this.store.select(getMenuItemsState).subscribe({
-            next: (x) => {
-                console.log("listening for updates"),
-                this.checkoutItems = x
-            },
-            error: (err) => console.log(err),
-            complete: () => console.log("Complete")
+    selectedMenuItems: CheckoutItemModel[] = [];
+    checkoutItems!: CheckoutCartModel;
+    subscription!: Subscription; 
+
+    ngOnInit():void{
+        this.subscription = this.store.select(getMenuItemsState).subscribe(x => this.selectedMenuItems = x);
+
+        if (this.selectedMenuItems){
+            this.checkoutItems = this.sortItems(this.selectedMenuItems);
+        }
+    }
+
+    ngOnDestroy(): void {
+        if (this.subscription){
+            this.subscription.unsubscribe();
+        }
+    }   
+
+    sortItems(items: CheckoutItemModel[]):CheckoutCartModel{
+        let arr: CheckoutCartModel = {
+            items: [],
+            totalPrice: 0
+        }; 
+        items.forEach(x => {
+            let item = arr.items.find(i => i.name == x.name);
+            if (!item){
+                arr.items.push({
+                    name: x.name,
+                    price: x.quantity * x.price,
+                    quantity: x.quantity,
+                    message: x.message
+                })
+            }
+            else{
+                item.quantity += x.quantity
+                item.price += (x.quantity * x.price)
+            }
+        })
+        arr.totalPrice = this.getTotalPrice(arr);
+        return arr;
+    }
+
+    getTotalPrice(items: CheckoutCartModel):number{
+        let total = 0;
+        items.items.forEach(x => {
+            total += x.price
         });
+        return total;
     }
 }

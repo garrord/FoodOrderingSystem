@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { FormGroup, FormBuilder } from "@angular/forms";
-import { CheckoutCartModel } from "src/app/Models/checkout-cart.model";
+import { CheckoutItemModel } from "src/app/Models/checkout-item.model";
 
 @Component({
     selector: 'menu-item-dialog-container',
@@ -32,17 +32,22 @@ export class MenuItemDialogContainer implements OnInit{
     }
 
     save():void{
-        let item: CheckoutCartModel = this.createItem();
+        let item: CheckoutItemModel = this.createItem();
         this.dialogRef.close(item);
     }
 
-    createItem():CheckoutCartModel{
-        let item: CheckoutCartModel = new CheckoutCartModel();
+    createItem():CheckoutItemModel{
+        let item: CheckoutItemModel = new CheckoutItemModel();
         item.name = this.data.selectedItem.name;
         item.price = this.data.selectedItem.price;
-        item.quantity = this.foodForm.get('quantity')?.value;
+        item.quantity = parseInt(this.foodForm.get('quantity')?.value);
         item.message = this.foodForm.get('message')?.value;
 
         return item;
+    }
+
+    calculateTotalPrice():string{
+        let totalPrice: number = this.data.selectedItem.price * parseInt(this.foodForm.get('quantity')?.value);
+        return totalPrice.toFixed(2);
     }
 }

@@ -5,7 +5,7 @@ import { MenuItemDialogContainer } from "src/app/Containers/MenutItemDialog/menu
 import { MenuItemModel } from "src/app/Models/menu-item.model";
 import { CheckoutMenuState } from "src/app/state/menu-checkout.reducer";
 import { addItemToCheckout } from "../../state/menu-items.actions";
-import { CheckoutCartModel } from "src/app/Models/checkout-cart.model";
+import { CheckoutItemModel } from "src/app/Models/checkout-item.model";
 
 @Component({
     selector: 'menu-items-component',
@@ -23,7 +23,7 @@ export class MenuItemsComponent{
 
     openDialog(selectedItem: MenuItemModel):void{
         const dialogRef: MatDialogRef<MenuItemDialogContainer> = this.dialog.open(MenuItemDialogContainer, {
-            height: '300px',
+            height: '325px',
             width: '300px',
             hasBackdrop: true,
             disableClose: true,
@@ -33,7 +33,7 @@ export class MenuItemsComponent{
         });
 
         dialogRef.afterClosed().subscribe(item => {
-            if(item as CheckoutCartModel){
+            if(item as CheckoutItemModel){
                 this.store.dispatch(addItemToCheckout( { item } ));
             }
         });

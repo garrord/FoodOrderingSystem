@@ -8,7 +8,7 @@ import { CheckoutCartModel } from "src/app/Models/checkout-cart.model";
 
 export class CheckoutComponent{
 
-    @Input() checkoutItems!: CheckoutCartModel[];
+    @Input() checkoutItems!: CheckoutCartModel;
 
     ngOnInit():void{
         console.log("hi from checkout component");

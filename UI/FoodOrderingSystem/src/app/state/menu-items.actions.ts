@@ -1,7 +1,7 @@
 import { createAction, props } from "@ngrx/store";
-import { CheckoutCartModel } from "../Models/checkout-cart.model";
+import { CheckoutItemModel } from "../Models/checkout-item.model";
 
 export  const addItemToCheckout  = createAction(
     '[Menu] Add Item To Checkout',
-    props<{ item: CheckoutCartModel }>()
+    props<{ item: CheckoutItemModel }>()
 );

@@ -1,9 +1,9 @@
 import { createReducer, createSelector, on } from "@ngrx/store";
-import { CheckoutCartModel } from "../Models/checkout-cart.model";
+import { CheckoutItemModel } from "../Models/checkout-item.model";
 import { addItemToCheckout } from "./menu-items.actions"
 
 export interface CheckoutMenuState{
-    menuItems:CheckoutCartModel[];
+    menuItems:CheckoutItemModel[];
 };
 
 export interface AppState {
