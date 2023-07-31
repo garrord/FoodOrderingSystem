@@ -39,7 +39,7 @@ export class MenuItemDialogContainer implements OnInit{
     createItem():CheckoutItemModel{
         let item: CheckoutItemModel = new CheckoutItemModel();
         item.name = this.data.selectedItem.name;
-        item.price = this.data.selectedItem.price;
+        item.individualPrice = this.data.selectedItem.price;
         item.quantity = parseInt(this.foodForm.get('quantity')?.value);
         item.message = this.foodForm.get('message')?.value;
 

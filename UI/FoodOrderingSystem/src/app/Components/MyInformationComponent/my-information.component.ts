@@ -4,7 +4,8 @@ import { CheckoutCartModel } from "src/app/Models/checkout-cart.model";
 
 @Component({
     selector: 'my-information-component',
-    templateUrl: 'my-information.component.html'
+    templateUrl: 'my-information.component.html',
+    styleUrls:['my-information.component.scss']
 })
 
 export class MyInformationComponent{

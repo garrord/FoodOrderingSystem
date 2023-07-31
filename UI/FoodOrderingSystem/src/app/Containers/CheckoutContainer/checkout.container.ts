@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from "@angular/core"
 import { Store } from "@ngrx/store";
 import { Subscription } from "rxjs";
-import { CheckoutCartModel } from "src/app/Models/checkout-cart.model";
 import { CheckoutItemModel } from "src/app/Models/checkout-item.model";
 import { AppState, getMenuItemsState } from "src/app/state/menu-checkout.reducer";
+import { updateCheckoutCart } from "src/app/state/menu-items.actions";
 
 @Component({
     selector: 'checkout-container',
@@ -15,16 +15,16 @@ export class CheckoutContainer implements OnInit, OnDestroy{
     constructor(private store: Store<AppState>){}
 
     selectedMenuItems: CheckoutItemModel[] = [];
-    checkoutItems!: CheckoutCartModel;
+    checkoutItems: CheckoutItemModel[] = [];
     subscription!: Subscription;
     myInfoFormIsValid:boolean = false;
+    totalPrice:number = 0;
 
     ngOnInit():void{
-        this.subscription = this.store.select(getMenuItemsState).subscribe(x => this.selectedMenuItems = x);
-
-        if (this.selectedMenuItems){
+        this.subscription = this.store.select(getMenuItemsState).subscribe(x => {
+            this.selectedMenuItems = x
             this.checkoutItems = this.sortItems(this.selectedMenuItems);
-        }
+        });
     }
 
     ngOnDestroy(): void {
@@ -33,40 +33,43 @@ export class CheckoutContainer implements OnInit, OnDestroy{
         }
     }   
 
-    sortItems(items: CheckoutItemModel[]):CheckoutCartModel{
-        let arr: CheckoutCartModel = {
-            items: [],
-            totalPrice: 0
-        }; 
+    sortItems(items: CheckoutItemModel[]){
+        let arr: CheckoutItemModel[] = []
         items.forEach(x => {
-            let item = arr.items.find(i => i.name == x.name);
+            let item = arr.find(i => i.name == x.name);
             if (!item){
-                arr.items.push({
+                arr.push({
                     name: x.name,
-                    price: x.quantity * x.price,
                     quantity: x.quantity,
-                    message: x.message
+                    message: x.message,
+                    individualPrice: x.individualPrice
                 })
             }
             else{
                 item.quantity += x.quantity
-                item.price += (x.quantity * x.price)
             }
         })
-        arr.totalPrice = this.getTotalPrice(arr);
+        this.getTotalPrice(arr);
         return arr;
     }
 
-    getTotalPrice(items: CheckoutCartModel):number{
-        let total = 0;
-        items.items.forEach(x => {
-            total += x.price
+    getTotalPrice(items: CheckoutItemModel[]){
+        this.totalPrice = 0;
+        items.forEach(x => {
+            this.totalPrice += x.individualPrice * x.quantity
         });
-        return total;
     }
 
     validateMyInfoForm(isValid: boolean){
         this.myInfoFormIsValid = isValid;
         console.log(this.myInfoFormIsValid);
+    }
+
+    updateCheckoutItems(updatedCheckoutItems:CheckoutItemModel[]){
+        this.store.dispatch(updateCheckoutCart({ items: updatedCheckoutItems }));
+    }
+
+    placeOrder(){
+        
     }
 }

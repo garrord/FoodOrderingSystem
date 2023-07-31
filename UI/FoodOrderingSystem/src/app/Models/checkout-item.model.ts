@@ -1,6 +1,7 @@
 export class CheckoutItemModel{
     name!:string;
-    price!:number;
+    individualPrice!: number;
+    //totalPrice!:number;
     quantity!:number;
     message?:string;
 }

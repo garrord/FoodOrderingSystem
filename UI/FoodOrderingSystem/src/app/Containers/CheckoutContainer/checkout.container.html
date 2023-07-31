@@ -4,4 +4,12 @@
 
 <ordered-items-component
     [checkoutItems]="checkoutItems"
+    [totalPrice]="totalPrice"
+    (updatedCheckoutItems)="updateCheckoutItems($event)"
 ></ordered-items-component>
+
+<button 
+    *ngIf="myInfoFormIsValid" 
+    (click)="placeOrder()"
+>Place Order
+</button>

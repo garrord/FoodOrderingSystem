@@ -1,4 +1,4 @@
-<form [formGroup]="orderForm">
+<!-- <form [formGroup]="orderForm">
 	<hr>
 		<div formArrayName="items">
 			<div *ngFor="let child of getOptionsControls(); let i = index">
@@ -31,4 +31,28 @@
     <button type="submit">Submit</button>
 </form>
 <br>
- <pre>{{orderForm.value | json }}</pre>
+ <pre>{{orderForm.value | json }}</pre> -->
+
+ <div
+    *ngFor="let item of checkoutItems; let i = index"
+ >
+    {{ i + 1 }}.{{ item.name }} {{ item.individualPrice }}  
+    <mat-form-field>
+        <mat-label>Quantity</mat-label>
+            <mat-select [(value)]="item.quantity" (selectionChange)="quantityChange()">
+                <mat-option [value]=1>1</mat-option>
+                <mat-option [value]=2>2</mat-option>
+                <mat-option [value]=3>3</mat-option>
+                <mat-option [value]=4>4</mat-option>
+                <mat-option [value]=5>5</mat-option>
+                <mat-option [value]=6>6</mat-option>
+                <mat-option [value]=7>7</mat-option>
+                <mat-option [value]=8>8</mat-option>
+                <mat-option [value]=9>9</mat-option>
+                <mat-option [value]=10></mat-option>
+        </mat-select>
+    </mat-form-field>
+    <p>{{ item.quantity }}</p>
+    <p>{{ totalPrice }}</p>
+</div>
+
