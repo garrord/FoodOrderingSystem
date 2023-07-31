@@ -1,3 +1,7 @@
-<checkout-component
+<my-information-component
+    (myInfoIsValid)="validateMyInfoForm($event)"
+></my-information-component>
+
+<ordered-items-component
     [checkoutItems]="checkoutItems"
-></checkout-component>
+></ordered-items-component>

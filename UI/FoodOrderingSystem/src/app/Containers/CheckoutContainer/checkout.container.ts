@@ -16,7 +16,8 @@ export class CheckoutContainer implements OnInit, OnDestroy{
 
     selectedMenuItems: CheckoutItemModel[] = [];
     checkoutItems!: CheckoutCartModel;
-    subscription!: Subscription; 
+    subscription!: Subscription;
+    myInfoFormIsValid:boolean = false;
 
     ngOnInit():void{
         this.subscription = this.store.select(getMenuItemsState).subscribe(x => this.selectedMenuItems = x);
@@ -62,5 +63,10 @@ export class CheckoutContainer implements OnInit, OnDestroy{
             total += x.price
         });
         return total;
+    }
+
+    validateMyInfoForm(isValid: boolean){
+        this.myInfoFormIsValid = isValid;
+        console.log(this.myInfoFormIsValid);
     }
 }
