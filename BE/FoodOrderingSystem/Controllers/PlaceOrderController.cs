@@ -15,10 +15,10 @@ namespace FoodOrderingSystem.Controllers
         }
 
         [HttpPost]
-        public async Task PlaceOrder(CheckoutItemModel checkout)
+        public async Task<ActionResult> PlaceOrder(CheckoutItemModel checkout)
         {
-            _placeOrderManager.CreateOrder(checkout);
-            //return new OkResult();
+            await _placeOrderManager.CreateOrder(checkout);
+            return new OkResult();
         }
     }
 }

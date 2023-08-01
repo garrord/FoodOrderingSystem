@@ -12,9 +12,9 @@ namespace FoodOrderingSystem.Managers
             _placeOrderRepo = placeOrderRepo;
         }
 
-        public void CreateOrder(CheckoutItemModel checkout)
+        public async Task CreateOrder(CheckoutItemModel checkout)
         {
-            _placeOrderRepo.CreateOrder(checkout);
+            await _placeOrderRepo.CreateOrder(checkout);
         }
     }
 }

@@ -2,6 +2,7 @@
 using FoodOrderingSystem.DbContexts;
 using FoodOrderingSystem.Entities;
 using FoodOrderingSystem.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace FoodOrderingSystem.Repositories
 {
@@ -16,15 +17,15 @@ namespace FoodOrderingSystem.Repositories
 
         public async Task CreateOrder(CheckoutItemModel checkout)
         {
-            CreateAddress(checkout.Address);
+            await CreateAddress(checkout.Address);
 
-            Address address = _context.Addresses.Where(x => x.AddressLine1 == checkout.Address.AddressLine1).First();
+            Address address = await _context.Addresses.Where(x => x.AddressLine1 == checkout.Address.AddressLine1).FirstAsync();
 
-            DeliveryMethod delivery = _context.DeliveryMethods.Where(x => x.Name == checkout.DeliveryMethod).First();
+            DeliveryMethod delivery = await _context.DeliveryMethods.Where(x => x.Name == checkout.DeliveryMethod).FirstAsync();
 
-            PaymentMethod payment = _context.PaymentTypes.Where(x => x.Name == checkout.PaymentMethod).First();
+            PaymentMethod payment = await _context.PaymentTypes.Where(x => x.Name == checkout.PaymentMethod).FirstAsync();
 
-            List<FoodItemOrder> items = CreateOrderedFoodItems(checkout.FoodItemsOrdered);
+            List<FoodItemOrder> items = await CreateOrderedFoodItems(checkout.FoodItemsOrdered);
 
             Order entityToUpdate = new Order();
             entityToUpdate.FirstName = checkout.FirstName;
@@ -43,14 +44,14 @@ namespace FoodOrderingSystem.Repositories
             _context.SaveChanges();
         }
 
-        private List<FoodItemOrder> CreateOrderedFoodItems(List<SelectedFoodModel> items)
+        private async Task<List<FoodItemOrder>> CreateOrderedFoodItems(List<SelectedFoodModel> items)
         {
             List<FoodItemOrder> foodItemOrders = new List<FoodItemOrder>();
 
             foreach (SelectedFoodModel item in items)
             {
-                int menuItemId = _context.MenuItems.Where(x => x.Name == item.Name)
-                    .Select(x => x.Id).First();
+                int menuItemId = await _context.MenuItems.Where(x => x.Name == item.Name)
+                    .Select(x => x.Id).FirstAsync();
 
                 FoodItemOrder food = new FoodItemOrder()
                 {
@@ -64,7 +65,7 @@ namespace FoodOrderingSystem.Repositories
             return foodItemOrders;
         }
 
-        private void CreateAddress(Address address)
+        private async Task CreateAddress(Address address)
         {
             Address entityToUpdate = new Address();
             if (!_context.Addresses.AsEnumerable().Any(row => row.AddressLine1 == address.AddressLine1))
@@ -76,7 +77,7 @@ namespace FoodOrderingSystem.Repositories
                 entityToUpdate.ZipCode = address.ZipCode;
 
                 _context.Addresses.Add(entityToUpdate);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
         }
     }
