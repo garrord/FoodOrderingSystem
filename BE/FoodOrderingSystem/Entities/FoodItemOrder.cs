@@ -10,7 +10,7 @@ namespace FoodOrderingSystem.Entities
         public MenuItem MenuItem { get; set; }
         [ForeignKey("MenuItemId")]
         public int MenuItemId { get; set; }
-        public List<FoodItemOrderXOrder> FoodItemOrderXOrders { get; set; }
+        public List<Order> Orders { get; set; }
         public int Quantity { get; set; }
     }
 }

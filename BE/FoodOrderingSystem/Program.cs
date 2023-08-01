@@ -20,6 +20,8 @@ builder.Services.AddTransient<IMenuQueryRepository, MenuQueryRepository>();
 builder.Services.AddTransient<IMenuManager, MenuManager>();
 builder.Services.AddTransient<ILocationDetailsQueryRepository, LocationDetailsQueryRepository>();
 builder.Services.AddTransient<ILocationDetailsManager, LocationDetailsManager>();
+builder.Services.AddTransient<IPlaceOrderRepository, PlaceOrderRepository>();
+builder.Services.AddTransient<IPlaceOrderManager, PlaceOrderManager>();
 
 builder.Services.AddCors(options => options.AddPolicy("AllowSpecificOrigin",
     builder => builder.WithOrigins("*")

@@ -7,7 +7,7 @@ namespace FoodOrderingSystem.DbContexts
     {
         public DbSet<MenuItem> MenuItems { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<FoodItemOrderXOrder> FoodItemOrderXOrders { get; set; }
+        //public DbSet<FoodItemOrderXOrder> FoodItemOrderXOrders { get; set; }
         public DbSet<FoodItemOrder> FoodItemOrders { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<PaymentMethod> PaymentTypes { get; set; }

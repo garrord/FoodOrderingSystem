@@ -4,6 +4,7 @@ using FoodOrderingSystem.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FoodOrderingSystem.Migrations
 {
     [DbContext(typeof(FoodOrderingContext))]
-    partial class FoodOrderingContextModelSnapshot : ModelSnapshot
+    [Migration("20230801021141_trying-to-fix-entities")]
+    partial class tryingtofixentities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,21 +24,6 @@ namespace FoodOrderingSystem.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("FoodItemOrderOrder", b =>
-                {
-                    b.Property<int>("FoodItemOrdersId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OrdersId")
-                        .HasColumnType("int");
-
-                    b.HasKey("FoodItemOrdersId", "OrdersId");
-
-                    b.HasIndex("OrdersId");
-
-                    b.ToTable("FoodItemOrderOrder");
-                });
 
             modelBuilder.Entity("FoodOrderingSystem.Entities.Address", b =>
                 {
@@ -137,7 +125,7 @@ namespace FoodOrderingSystem.Migrations
 
                     b.HasIndex("FoodItemOrderId");
 
-                    b.ToTable("FoodItemOrderXOrder");
+                    b.ToTable("FoodItemOrderXOrders");
                 });
 
             modelBuilder.Entity("FoodOrderingSystem.Entities.HoursOfOperation", b =>
@@ -298,21 +286,6 @@ namespace FoodOrderingSystem.Migrations
                     b.ToTable("PaymentTypes");
                 });
 
-            modelBuilder.Entity("FoodItemOrderOrder", b =>
-                {
-                    b.HasOne("FoodOrderingSystem.Entities.FoodItemOrder", null)
-                        .WithMany()
-                        .HasForeignKey("FoodItemOrdersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("FoodOrderingSystem.Entities.Order", null)
-                        .WithMany()
-                        .HasForeignKey("OrdersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("FoodOrderingSystem.Entities.FoodItemOrder", b =>
                 {
                     b.HasOne("FoodOrderingSystem.Entities.MenuItem", "MenuItem")
@@ -327,13 +300,13 @@ namespace FoodOrderingSystem.Migrations
             modelBuilder.Entity("FoodOrderingSystem.Entities.FoodItemOrderXOrder", b =>
                 {
                     b.HasOne("FoodOrderingSystem.Entities.FoodItemOrder", "FoodItemOrder")
-                        .WithMany()
+                        .WithMany("FoodItemOrderXOrders")
                         .HasForeignKey("FoodItemOrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("FoodOrderingSystem.Entities.Order", "Order")
-                        .WithMany()
+                        .WithMany("FoodItemOrderXOrders")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -384,6 +357,16 @@ namespace FoodOrderingSystem.Migrations
             modelBuilder.Entity("FoodOrderingSystem.Entities.Category", b =>
                 {
                     b.Navigation("MenuItems");
+                });
+
+            modelBuilder.Entity("FoodOrderingSystem.Entities.FoodItemOrder", b =>
+                {
+                    b.Navigation("FoodItemOrderXOrders");
+                });
+
+            modelBuilder.Entity("FoodOrderingSystem.Entities.Order", b =>
+                {
+                    b.Navigation("FoodItemOrderXOrders");
                 });
 #pragma warning restore 612, 618
         }
