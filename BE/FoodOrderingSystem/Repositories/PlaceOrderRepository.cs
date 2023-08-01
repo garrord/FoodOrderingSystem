@@ -59,18 +59,7 @@ namespace FoodOrderingSystem.Repositories
                 };
 
                 foodItemOrders.Add(food);
-
-                //_context.FoodItemOrders.Add(food);
-
-                //FoodItemOrderXOrder foodItemOrderXOrder = new FoodItemOrderXOrder
-                //{
-                //    FoodItemOrder = food
-                //};
-
-                //foodItemOrderXOrders.Add(foodItemOrderXOrder);
-                //_context.FoodItemOrderXOrders.Add(foodItemOrderXOrder);
             }          
-            //_context.SaveChanges();
 
             return foodItemOrders;
         }
