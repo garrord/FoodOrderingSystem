@@ -31,6 +31,9 @@ import { CheckoutContainer } from './Containers/CheckoutContainer/checkout.conta
 import { MatBadgeModule } from '@angular/material/badge';
 import { AddItemContainer } from './Containers/AddItemContainer/add-item.container';
 import { OrderedItemsComponent } from './Components/OrderedItemsComponent/ordered-items.component';
+import { OrderService } from './Services/place-order.service';
+import { OptionsComponent } from './Components/OptionsComponent/options.component';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -47,9 +50,11 @@ import { OrderedItemsComponent } from './Components/OrderedItemsComponent/ordere
     MyInformationComponent,
     NavBarComponent,
     CheckoutContainer,
-    OrderedItemsComponent
+    OrderedItemsComponent,
+    OptionsComponent
   ],
   imports: [
+    MatChipsModule,
     MatBadgeModule,
     MatSelectModule,
     MatInputModule,
@@ -84,7 +89,8 @@ import { OrderedItemsComponent } from './Components/OrderedItemsComponent/ordere
    ],
   providers: [
     LocationDetailService,
-    MenuItemsService
+    MenuItemsService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })

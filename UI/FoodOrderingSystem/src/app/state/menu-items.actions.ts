@@ -10,3 +10,7 @@ export const updateCheckoutCart = createAction(
     '[Menu] Update Item In Checkout',
     props<{items: CheckoutItemModel[]}>()
 );
+
+export const clearCheckoutCart = createAction(
+    '[Menu] Clear Checkout Cart'
+);

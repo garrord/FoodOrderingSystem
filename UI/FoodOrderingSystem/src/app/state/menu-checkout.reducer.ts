@@ -1,6 +1,6 @@
 import { createReducer, createSelector, on } from "@ngrx/store";
 import { CheckoutItemModel } from "../Models/checkout-item.model";
-import { addItemToCheckout, updateCheckoutCart } from "./menu-items.actions"
+import { addItemToCheckout, clearCheckoutCart, updateCheckoutCart } from "./menu-items.actions"
 
 export interface CheckoutMenuState{
     menuItems:CheckoutItemModel[];
@@ -37,6 +37,14 @@ export const menuCheckoutReducer = createReducer<CheckoutMenuState>(
             return {
                 ...state,
                 menuItems: action.items
+            }
+        }
+    ),
+    on(
+        clearCheckoutCart, (state: CheckoutMenuState) => {
+            return {
+                ...state,
+                menuItems: []
             }
         }
     )

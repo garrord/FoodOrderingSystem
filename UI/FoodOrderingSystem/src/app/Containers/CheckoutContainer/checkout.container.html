@@ -1,5 +1,6 @@
 <my-information-component
-    (myInfoIsValid)="validateMyInfoForm($event)"
+    (myInformation)="validateMyInfoForm($event)"
+    [checkoutCartModel]="checkoutCartModel"
 ></my-information-component>
 
 <ordered-items-component
@@ -8,8 +9,12 @@
     (updatedCheckoutItems)="updateCheckoutItems($event)"
 ></ordered-items-component>
 
+<options-component>
+    
+</options-component>
+
 <button 
-    *ngIf="myInfoFormIsValid" 
+    *ngIf="myInfoFormIsValid"
     (click)="placeOrder()"
 >Place Order
 </button>

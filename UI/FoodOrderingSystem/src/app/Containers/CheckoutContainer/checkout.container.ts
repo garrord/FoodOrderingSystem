@@ -1,9 +1,12 @@
 import { Component, OnDestroy, OnInit } from "@angular/core"
+import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { Subscription } from "rxjs";
+import { CheckoutCartModel } from "src/app/Models/checkout-cart.model";
 import { CheckoutItemModel } from "src/app/Models/checkout-item.model";
+import { OrderService } from "src/app/Services/place-order.service";
 import { AppState, getMenuItemsState } from "src/app/state/menu-checkout.reducer";
-import { updateCheckoutCart } from "src/app/state/menu-items.actions";
+import { clearCheckoutCart, updateCheckoutCart } from "src/app/state/menu-items.actions";
 
 @Component({
     selector: 'checkout-container',
@@ -12,7 +15,13 @@ import { updateCheckoutCart } from "src/app/state/menu-items.actions";
 
 export class CheckoutContainer implements OnInit, OnDestroy{
 
-    constructor(private store: Store<AppState>){}
+    constructor(
+        private store: Store<AppState>,
+        private orderService: OrderService,
+        private router:Router
+    ){}
+
+    checkoutCartModel: CheckoutCartModel = new CheckoutCartModel;
 
     selectedMenuItems: CheckoutItemModel[] = [];
     checkoutItems: CheckoutItemModel[] = [];
@@ -22,8 +31,9 @@ export class CheckoutContainer implements OnInit, OnDestroy{
 
     ngOnInit():void{
         this.subscription = this.store.select(getMenuItemsState).subscribe(x => {
-            this.selectedMenuItems = x
-            this.checkoutItems = this.sortItems(this.selectedMenuItems);
+            this.selectedMenuItems = x,
+            this.checkoutItems = this.sortItems(this.selectedMenuItems),
+            this.checkoutCartModel.foodItemsOrdered = this.checkoutItems
         });
     }
 
@@ -31,7 +41,7 @@ export class CheckoutContainer implements OnInit, OnDestroy{
         if (this.subscription){
             this.subscription.unsubscribe();
         }
-    }   
+    }
 
     sortItems(items: CheckoutItemModel[]){
         let arr: CheckoutItemModel[] = []
@@ -49,20 +59,19 @@ export class CheckoutContainer implements OnInit, OnDestroy{
                 item.quantity += x.quantity
             }
         })
-        this.getTotalPrice(arr);
         return arr;
     }
 
-    getTotalPrice(items: CheckoutItemModel[]){
+    getTotalPrice(items: CheckoutItemModel[]):number{
         this.totalPrice = 0;
         items.forEach(x => {
             this.totalPrice += x.individualPrice * x.quantity
         });
+        return this.totalPrice;
     }
 
-    validateMyInfoForm(isValid: boolean){
-        this.myInfoFormIsValid = isValid;
-        console.log(this.myInfoFormIsValid);
+    validateMyInfoForm(myInformation: CheckoutCartModel){
+        this.myInfoFormIsValid = true;
     }
 
     updateCheckoutItems(updatedCheckoutItems:CheckoutItemModel[]){
@@ -70,6 +79,17 @@ export class CheckoutContainer implements OnInit, OnDestroy{
     }
 
     placeOrder(){
-        
+        let totalPrice = this.getTotalPrice(this.checkoutCartModel.foodItemsOrdered);
+        this.checkoutCartModel.totalPrice = totalPrice;
+        this.checkoutCartModel.paymentMethod = "Cash";
+        this.checkoutCartModel.deliveryMethod = "Pick up";
+        console.log(this.checkoutCartModel);
+        this.orderService.placeOrder(this.checkoutCartModel).subscribe({
+            error: (err) => console.log("error: " + err.message),
+            complete: () => {
+                this.router.navigateByUrl('/home'),
+                this.store.dispatch(clearCheckoutCart())
+            }
+        });
     }
 }
