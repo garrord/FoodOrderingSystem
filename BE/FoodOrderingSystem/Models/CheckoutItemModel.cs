@@ -13,8 +13,8 @@ namespace FoodOrderingSystem.Models
         public string DeliveryMethod { get; set; }
         public string PaymentMethod { get; set; }
         public Address Address { get; set; }
-        public decimal IndividualPrice { get; set; }
-        public int Quantity { get; set; }
+        //public decimal IndividualPrice { get; set; }
+        //public int Quantity { get; set; }
         public string? Message { get; set; }
         public DateTime TimeOrdered { get; set; }
         public List<SelectedFoodModel> FoodItemsOrdered { get; set; }

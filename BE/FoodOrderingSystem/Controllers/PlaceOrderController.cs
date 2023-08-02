@@ -14,7 +14,7 @@ namespace FoodOrderingSystem.Controllers
             _placeOrderManager = placeOrderManager;
         }
 
-        [HttpPost]
+        [HttpPost("create")]
         public async Task<ActionResult> PlaceOrder(CheckoutItemModel checkout)
         {
             await _placeOrderManager.CreateOrder(checkout);
