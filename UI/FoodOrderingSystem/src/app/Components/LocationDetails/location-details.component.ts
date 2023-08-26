@@ -3,7 +3,8 @@ import { LocationDetailsModel } from "src/app/Models/location-details.model";
 
 @Component({
     selector: 'location-details-component',
-    templateUrl: 'location-details.component.html'
+    templateUrl: 'location-details.component.html',
+    styleUrls:['location-details.component.scss']
 })
 
 export class LocationDetailsComponent{

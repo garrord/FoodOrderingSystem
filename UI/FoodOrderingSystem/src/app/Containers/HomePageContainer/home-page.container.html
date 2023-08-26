@@ -1,20 +1,20 @@
-<div class="container">
+<div class="page-container">
+        <div class="picture-container">
+            <div class="picture">
+                <picture-component
+                ></picture-component>
+            </div>
+        </div>
+        
+        <div class="hours">
+            <opening-hours-component
+                [hoursOfOperation]="hoursOfOperation"
+            ></opening-hours-component>
+        </div>
 
-    <picture-component 
-        class="picture"
-    >
-    </picture-component>
-    
-    <opening-hours-component
-        class="hours"
-        [hoursOfOperation]="hoursOfOperation"
-    >
-    </opening-hours-component>
-    
-    <location-details-component
-        class="details"
-        [locationDetails]="locationDetails"
-    >
-    </location-details-component>
-
+        <div class="details">
+            <location-details-component
+                [locationDetails]="locationDetails"
+            ></location-details-component>
+        </div>
 </div>

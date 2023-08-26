@@ -1,17 +1,15 @@
-<!-- <div class="center"> -->
-    <div class="tt">
-        <categories-component
-            class="categories left"
+<div class="center">
+    <div class="food-container">
+        <categories-component class="categories left"
             [categories]="categories"
             (selectedCategory)="selectCategory($event)"
         ></categories-component>
     
-        <menu-items-component *ngIf="menuItemsPerCategory.length > 0"
-            class="food right"
+        <menu-items-component *ngIf="menuItemsPerCategory.length > 0" class="food right"
             [menuItemsPerCategory]="menuItemsPerCategory"
         ></menu-items-component>
     </div>
-<!-- </div> -->
+</div>
 
 
 <div>

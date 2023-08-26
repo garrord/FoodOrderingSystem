@@ -1,11 +1,11 @@
 import { Component, Input } from "@angular/core";
 import { MatDialog, MatDialogConfig, MatDialogRef } from "@angular/material/dialog";
 import { Store } from "@ngrx/store";
-import { MenuItemDialogContainer } from "src/app/Containers/MenutItemDialog/menu-item-dialog.container";
-import { MenuItemModel } from "src/app/Models/menu-item.model";
-import { CheckoutMenuState } from "src/app/state/menu-checkout.reducer";
+import { MenuItemDialogContainer } from "../../Containers/MenutItemDialog/menu-item-dialog.container";
+import { MenuItemModel } from "../../Models/menu-item.model";
+import { CheckoutMenuState } from "../../state/menu-checkout.reducer"
 import { addItemToCheckout } from "../../state/menu-items.actions";
-import { CheckoutItemModel } from "src/app/Models/checkout-item.model";
+import { CheckoutItemModel } from "../../Models/checkout-item.model";
 
 @Component({
     selector: 'menu-items-component',
@@ -23,7 +23,7 @@ export class MenuItemsComponent{
 
     openDialog(selectedItem: MenuItemModel):void{
         const dialogRef: MatDialogRef<MenuItemDialogContainer> = this.dialog.open(MenuItemDialogContainer, {
-            height: '325px',
+            height: '275px',
             width: '300px',
             hasBackdrop: true,
             disableClose: true,

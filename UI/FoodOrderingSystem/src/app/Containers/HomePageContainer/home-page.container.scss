@@ -1,34 +1,34 @@
-.container{
-    position: relative;
-    width:50vw;
-    height:50vh;
-    border: 5px green solid;
+.page-container{
+    display: grid;
+    width:100vw;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+        'picture picture picture picture'
+        'details details hours hours'
+    ;
+    //border: 1px fuchsia solid;
+    gap:10px;
 }
 
-.picture{
-    position: absolute;
-    border:1px black solid;
-    width: 98%;
-    height: 55%;
-    top: 2%;
-    left: 1%;
-    right: 1%;
+.picture-container {
+    grid-area: picture;
+    //width:100vw;
+    //border: 3px red solid;
+    display:flex;
+    justify-content: center;    
+}
+
+.picture {
+    //border:3px solid blue;
+     width: 50%;
 }
 
 .hours{
-    position: absolute;
-    width:45%;
-    height:35%;
-    border:1px black solid;
-    right:1%;
-    bottom: 2%;
+    //border:3px solid green;
+    grid-area: hours;
 }
 
 .details{
-    position: absolute;
-    width:45%;
-    height:35%;
-    border:1px black solid;
-    left:1%;
-    bottom: 2%;
+    //border:3px solid orangered;
+    grid-area: details;
 }

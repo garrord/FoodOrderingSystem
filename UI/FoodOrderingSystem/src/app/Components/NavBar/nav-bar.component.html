@@ -1,6 +1,8 @@
 <div>
-    Jade Dragon Chinese Restaurant
+    Dragon Express 
+        |
     <a [routerLink]="['/home']">Home</a>
+        |
     <a [routerLink]="['/menu']">Menu</a>
     <a 
         *ngIf="items.length > 0"
@@ -8,5 +10,5 @@
         matBadgePosition="after"
         matBadgeColor="accent"
         matBadgeSize="large"
-        [routerLink]="['/cart']">Cart</a>
+        [routerLink]="['/cart']"> | Cart</a>
 </div>

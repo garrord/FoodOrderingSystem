@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { FormGroup, FormBuilder } from "@angular/forms";
-import { CheckoutItemModel } from "src/app/Models/checkout-item.model";
+import { CheckoutItemModel } from "../../Models/checkout-item.model";
 
 @Component({
     selector: 'menu-item-dialog-container',
@@ -23,7 +23,7 @@ export class MenuItemDialogContainer implements OnInit{
         this.foodForm = this.fb.group({
             price: { value: this.data.selectedItem.price, disabled: true },
             quantity: "1",
-            message: ''
+            //message: ''
         })
     }
 
@@ -41,7 +41,7 @@ export class MenuItemDialogContainer implements OnInit{
         item.name = this.data.selectedItem.name;
         item.individualPrice = this.data.selectedItem.price;
         item.quantity = parseInt(this.foodForm.get('quantity')?.value);
-        item.message = this.foodForm.get('message')?.value;
+        //item.message = this.foodForm.get('message')?.value;
 
         return item;
     }
