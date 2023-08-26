@@ -1,20 +1,29 @@
-<my-information-component
-    (myInformation)="validateMyInfoForm($event)"
-    [checkoutCartModel]="checkoutCartModel"
-></my-information-component>
+<div class="container">
+    <div class="my-info">
+        <my-information-component
+            (myInformation)="validateMyInfoForm($event)"
+            [checkoutCartModel]="checkoutCartModel"
+        ></my-information-component>
+    </div>
 
-<ordered-items-component
-    [checkoutItems]="checkoutItems"
-    [totalPrice]="totalPrice"
-    (updatedCheckoutItems)="updateCheckoutItems($event)"
-></ordered-items-component>
+    <div class="ordered-items">
+        <ordered-items-component
+            [checkoutItems]="checkoutItems"
+           
+            (updatedCheckoutItems)="updateCheckoutItems($event)"
+        ></ordered-items-component>
+    </div>
+</div>
 
-<options-component>
-    
-</options-component>
+<div>
+    <options-component>
+    </options-component>
+</div>
 
-<button 
-    *ngIf="myInfoFormIsValid"
-    (click)="placeOrder()"
->Place Order
-</button>
+<div>
+    <button 
+        *ngIf="myInfoFormIsValid"
+        (click)="placeOrder()"
+    >Place Order
+    </button>
+</div>

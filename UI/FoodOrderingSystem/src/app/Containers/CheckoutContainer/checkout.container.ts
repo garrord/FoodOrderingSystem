@@ -2,15 +2,16 @@ import { Component, OnDestroy, OnInit } from "@angular/core"
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { Subscription } from "rxjs";
-import { CheckoutCartModel } from "src/app/Models/checkout-cart.model";
-import { CheckoutItemModel } from "src/app/Models/checkout-item.model";
-import { OrderService } from "src/app/Services/place-order.service";
-import { AppState, getMenuItemsState } from "src/app/state/menu-checkout.reducer";
-import { clearCheckoutCart, updateCheckoutCart } from "src/app/state/menu-items.actions";
+import { CheckoutCartModel } from "../../Models/checkout-cart.model";
+import { CheckoutItemModel } from "../../Models/checkout-item.model";
+import { OrderService } from "../../Services/place-order.service";
+import { AppState, getMenuItemsState } from "../../state/menu-checkout.reducer";
+import { clearCheckoutCart, updateCheckoutCart } from "../../state/menu-items.actions";
 
 @Component({
     selector: 'checkout-container',
-    templateUrl: 'checkout.container.html'
+    templateUrl: 'checkout.container.html',
+    styleUrls:['checkout.container.scss']
 })
 
 export class CheckoutContainer implements OnInit, OnDestroy{

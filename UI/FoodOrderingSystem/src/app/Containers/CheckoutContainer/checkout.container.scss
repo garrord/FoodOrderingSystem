@@ -1,0 +1,17 @@
+.container{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+        'my-info ordered-items'
+    ;
+}
+
+.my-info {
+    border: 1px solid green;
+    grid-area: my-info;
+}
+
+.ordered-items {
+    border: 1px solid green;
+    grid-area: ordered-items
+}

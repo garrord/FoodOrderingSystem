@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-import { LocationDetailsModel } from "src/app/Models/location-details.model";
+import { LocationDetailsModel } from "../../Models/location-details.model";
 
 @Component({
     selector: 'location-details-component',

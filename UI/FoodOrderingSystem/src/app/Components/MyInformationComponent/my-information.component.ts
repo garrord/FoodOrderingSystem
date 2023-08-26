@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { Form, FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { CheckoutCartModel } from "src/app/Models/checkout-cart.model";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { CheckoutCartModel } from "../../Models/checkout-cart.model";
 
 @Component({
     selector: 'my-information-component',

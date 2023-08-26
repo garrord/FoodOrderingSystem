@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-import { MatDialog, MatDialogConfig, MatDialogRef } from "@angular/material/dialog";
+import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { Store } from "@ngrx/store";
 import { MenuItemDialogContainer } from "../../Containers/MenutItemDialog/menu-item-dialog.container";
 import { MenuItemModel } from "../../Models/menu-item.model";

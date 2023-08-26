@@ -1,23 +1,32 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { CheckoutCartModel } from "src/app/Models/checkout-cart.model";
-import { CheckoutItemModel } from "src/app/Models/checkout-item.model";
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from "@angular/core";
+import { CheckoutItemModel } from "../../Models/checkout-item.model";
 
 @Component({
     selector: 'ordered-items-component',
     templateUrl: 'ordered-items.component.html'
 })
 
-export class OrderedItemsComponent implements OnInit{
+export class OrderedItemsComponent implements OnChanges {
 
-    @Input() totalPrice: number = 0;
-    @Input() checkoutItems!: CheckoutItemModel[];
+    @Input() checkoutItems: CheckoutItemModel[] = [];
     @Output() updatedCheckoutItems: EventEmitter<CheckoutItemModel[]> = new EventEmitter<CheckoutItemModel[]>
+    totalPrice: number = 0;
 
     quantityChange(){
         this.updatedCheckoutItems.emit(this.checkoutItems);
     }
 
-    ngOnInit(): void {
-        console.log(this.checkoutItems)
+    ngOnChanges(changes: SimpleChanges){
+        if (changes.checkoutItems.currentValue){
+            this.updateTotalPrice();
+        }
+    }
+
+    updateTotalPrice(){
+        let total = 0;
+        this.checkoutItems.forEach(x => {
+            total += x.individualPrice * x.quantity;
+        })
+        this.totalPrice = total;
     }
 }

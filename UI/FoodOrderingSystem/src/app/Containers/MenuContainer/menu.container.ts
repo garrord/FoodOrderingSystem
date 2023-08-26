@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { MenuItemModel } from "src/app/Models/menu-item.model";
-import { MenuItemsService } from "src/app/Services/menu-items.service";
+import { MenuItemModel } from "../../Models/menu-item.model";
+import { MenuItemsService } from "../../Services/menu-items.service";
 
 @Component({
     selector:'menu-container',
